@@ -17,12 +17,12 @@ inputs:
     description: 'Exit with error if download fails'
     required: false
     # type: 'boolean'
-    default: true
+    default: 'true'
   no_clobber:
     description: 'Will not overwrite existing local file'
     required: false
     # type: 'boolean'
-    default: false
+    default: 'false'
   path:
     description: 'Save file to this local file system path'
     required: false
