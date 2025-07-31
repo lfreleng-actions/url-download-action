@@ -3,7 +3,14 @@
 # SPDX-FileCopyrightText: 2025 The Linux Foundation
 
 ci:
-  autofix_commit_msg: "Chore: pre-commit autoupdate"
+  autofix_commit_msg: |
+    Chore: pre-commit autofixes
+
+    Signed-off-by: pre-commit-ci[bot] <pre-commit-ci@users.noreply.github.com>
+  autoupdate_commit_msg: |
+    Chore: pre-commit autoupdate
+
+    Signed-off-by: pre-commit-ci[bot] <pre-commit-ci@users.noreply.github.com>
 
 exclude: "^docs/conf.py"
 
@@ -90,3 +97,19 @@ repos:
     rev: 63c8f8312b7559622c0d82815639671ae42132ac # frozen: v2.4.1
     hooks:
       - id: codespell
+        args: ["--ignore-words=.codespell"]
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema.git
+    rev: 54da05914997e6b04e4db33ed6757d744984c68b  # frozen: 0.33.2
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+      - id: check-jsonschema
+        name: Check GitHub Workflows set timeout-minutes
+        args:
+          - --builtin-schema
+          - github-workflows-require-timeout
+        files: ^\.github/workflows/[^/]+$
+        types:
+          - yaml
+      - id: check-readthedocs
