@@ -33,26 +33,21 @@ jobs:
       contents: read
     timeout-minutes: 5
     steps:
-      - name: "Checkout repository"
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
       - name: "Running local action: ${{ github.repository }} [path]"
-        uses: ./
+        uses: $/
         with:
           path: /tmp/prescan-go-coverage-ubuntu.sh
           # yamllint disable-line rule:line-length
           url: "https://raw.githubusercontent.com/o-ran-sc/ci-management/refs/heads/master/jjb/com-golog/prescan-golog-go-ubuntu.sh"
 
       - name: "Running local action: ${{ github.repository }}"
-        uses: ./
+        uses: $/
         with:
           # yamllint disable-line rule:line-length
           url: "https://raw.githubusercontent.com/o-ran-sc/ci-management/refs/heads/master/jjb/com-golog/prescan-golog-go-ubuntu.sh"
 
       - name: "Running local action: ${{ github.repository }} [no_clobber]"
-        uses: ./
+        uses: $/
         with:
           no_clobber: true
           wget_flags: ''
